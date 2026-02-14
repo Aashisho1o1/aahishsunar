@@ -18,9 +18,8 @@ const Hero = () => {
 
   const stats = [
     { value: '2,000+', label: 'Users Served' },
-    { value: '$40,000+', label: 'Revenue Generated' },
-    { value: '4.0', label: 'GPA' },
-    { value: '50+', label: 'Customer Interviews' },
+    { value: '$40,000+ per annum', label: 'Revenue Generated' },
+    { value: '100+', label: 'Customer Interviews' },
     { value: '4', label: 'Languages Spoken' },
   ]
 
