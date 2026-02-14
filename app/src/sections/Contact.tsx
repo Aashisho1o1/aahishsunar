@@ -12,7 +12,7 @@ const Contact = () => {
     >
       <div className={`text-center transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         {/* Section Number */}
-        <p className="text-accent font-mono text-sm mb-4">06. What's Next?</p>
+        <p className="text-accent text-sm font-semibold tracking-[0.08em] mb-4">06. What's Next?</p>
 
         {/* Heading */}
         <h2 className="heading-lg text-white mb-6">
@@ -25,8 +25,8 @@ const Contact = () => {
         </p>
 
         {/* Status */}
-        <p className="text-accent font-mono text-sm mb-10">
-          CPT/OPT-eligible · No VISA Sponsorship Required · Available For Job/Internship
+        <p className="text-accent/90 text-sm md:text-base font-medium mb-10 max-w-3xl mx-auto leading-relaxed">
+          CPT/OPT-eligible · No visa sponsorship required · Available for jobs/internships
         </p>
 
         {/* Email Button */}
@@ -72,7 +72,7 @@ const Contact = () => {
           href="https://example.com/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent font-mono text-sm hover:underline"
+          className="text-accent text-sm font-medium hover:underline"
         >
           View Resume
         </a>
@@ -80,10 +80,10 @@ const Contact = () => {
 
       {/* Footer */}
       <footer className="mt-auto pt-16 text-center">
-        <p className="text-slate font-mono text-xs">
-          Designed & Built by Aashish Dhakal
+        <p className="text-slate text-sm font-medium">
+          Designed & Built by Aashish Sunar
         </p>
-        <p className="text-slate/50 font-mono text-xs mt-1">
+        <p className="text-slate/60 text-sm mt-1">
           Built with React, TypeScript & Tailwind CSS
         </p>
       </footer>

@@ -65,7 +65,7 @@ const Experience = () => {
               className="group grid md:grid-cols-[140px_1fr] gap-4 md:gap-8"
             >
               {/* Date */}
-              <div className="text-slate font-mono text-sm">
+              <div className="text-slate text-sm font-medium tracking-[0.04em]">
                 {exp.period}
               </div>
 
@@ -118,7 +118,7 @@ const Experience = () => {
             href="https://example.com/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent font-mono text-sm hover:underline inline-flex items-center gap-2"
+            className="text-accent text-sm font-medium hover:underline inline-flex items-center gap-2"
           >
             View Full Resume
             <ExternalLink className="w-4 h-4" />

@@ -50,7 +50,7 @@
   }
   
   .small-text {
-    @apply text-sm text-slate font-mono;
+    @apply text-sm text-slate font-medium;
   }
 
   .hero-kicker {
@@ -82,7 +82,7 @@
   }
   
   .tech-pill {
-    @apply px-3 py-1 text-xs font-mono text-slate-light bg-navy-light rounded
+    @apply px-3 py-1 text-xs font-medium text-slate-light bg-navy-light rounded
            transition-all duration-300 hover:text-accent;
   }
 
@@ -102,11 +102,11 @@
   }
   
   .section-number {
-    @apply text-accent font-mono text-sm mr-2;
+    @apply text-accent text-sm mr-2 font-semibold tracking-[0.08em];
   }
   
   .nav-link {
-    @apply text-sm font-mono text-slate-light hover:text-accent transition-all duration-300;
+    @apply text-sm font-medium text-slate-light hover:text-accent transition-all duration-300;
   }
   
   .nav-link.active {

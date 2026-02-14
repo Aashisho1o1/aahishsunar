@@ -145,7 +145,7 @@ const ChatBot = () => {
                   <button
                     key={index}
                     onClick={() => handleSend(prompt)}
-                    className="px-3 py-1.5 text-xs font-mono text-slate-light bg-navy border border-navy-lighter rounded hover:border-accent/50 hover:text-accent transition-all duration-300"
+                    className="px-3 py-1.5 text-xs font-medium text-slate-light bg-navy border border-navy-lighter rounded hover:border-accent/50 hover:text-accent transition-all duration-300"
                   >
                     {prompt}
                   </button>

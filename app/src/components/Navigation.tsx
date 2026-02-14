@@ -20,9 +20,9 @@ const Navigation = ({ activeSection }: NavigationProps) => {
         <a 
           href="#hero" 
           onClick={(e) => { e.preventDefault(); scrollToSection('hero') }}
-          className="text-accent font-mono text-2xl font-bold hover:text-white transition-colors"
+          className="text-accent font-sans text-2xl font-bold hover:text-white transition-colors"
         >
-          AD
+          A
         </a>
       </div>
 
@@ -37,7 +37,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                   activeSection === item.id ? 'text-accent' : 'text-slate-light hover:text-accent'
                 }`}
               >
-                <span className="font-mono text-xs mr-3 text-accent/50 group-hover:text-accent">
+                <span className="text-xs mr-3 text-accent/50 font-semibold tracking-[0.08em] group-hover:text-accent">
                   {item.number}.
                 </span>
                 <span className="text-sm font-medium">{item.label}</span>

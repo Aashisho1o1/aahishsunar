@@ -78,14 +78,14 @@ const Projects = () => {
                 <div className="relative group">
                   <div className="absolute inset-0 bg-accent/20 rounded mix-blend-screen group-hover:bg-transparent transition-all duration-300" />
                   <div className="bg-navy-light border border-navy-lighter rounded aspect-video flex items-center justify-center">
-                    <span className="text-slate font-mono text-sm">{project.name} Screenshot</span>
+                    <span className="text-slate text-sm font-medium">{project.name} Screenshot</span>
                   </div>
                 </div>
               </div>
 
               {/* Content */}
               <div className={`${index % 2 === 1 ? 'lg:order-1 lg:text-right' : ''}`}>
-                <p className="text-accent font-mono text-sm mb-2">Featured Project</p>
+                <p className="text-accent text-sm font-semibold tracking-[0.06em] mb-2">Featured Project</p>
                 <h3 className="text-2xl font-semibold text-slate-lighter mb-4">
                   <a 
                     href={project.demo}
@@ -100,7 +100,7 @@ const Projects = () => {
                 </div>
                 <div className={`flex flex-wrap gap-2 mb-4 ${index % 2 === 1 ? 'lg:justify-end' : ''}`}>
                   {project.tech.map((tech, tIndex) => (
-                    <span key={tIndex} className="text-slate-light font-mono text-sm">
+                    <span key={tIndex} className="text-slate-light text-sm font-medium">
                       {tech}
                     </span>
                   ))}
@@ -164,7 +164,7 @@ const Projects = () => {
               )}
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech, tIndex) => (
-                  <span key={tIndex} className="text-slate font-mono text-xs">
+                  <span key={tIndex} className="text-slate text-xs font-medium">
                     {tech}
                   </span>
                 ))}
@@ -179,7 +179,7 @@ const Projects = () => {
             href="https://github.com/Aashisho1o1"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent font-mono text-sm hover:underline inline-flex items-center gap-2"
+            className="text-accent text-sm font-medium hover:underline inline-flex items-center gap-2"
           >
             View Full Project Archive
             <ExternalLink className="w-4 h-4" />

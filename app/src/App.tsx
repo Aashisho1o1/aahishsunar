@@ -94,9 +94,9 @@ function MobileNav({ activeSection }: { activeSection: string }) {
         <a 
           href="#hero" 
           onClick={(e) => { e.preventDefault(); scrollToSection('hero') }}
-          className="text-accent font-mono text-lg font-bold"
+          className="text-accent font-sans text-lg font-bold"
         >
-          AD
+          A
         </a>
         
         <button 
@@ -120,7 +120,7 @@ function MobileNav({ activeSection }: { activeSection: string }) {
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`block w-full text-left py-3 text-sm font-mono transition-colors ${
+              className={`block w-full text-left py-3 text-sm font-medium transition-colors ${
                 activeSection === item.id ? 'text-accent' : 'text-slate-light hover:text-accent'
               }`}
             >
