@@ -22,9 +22,9 @@ module.exports = {
         white: '#e6f1ff',
       },
       fontFamily: {
-        sans: ['Arial', 'Helvetica', 'sans-serif'],
-        serif: ['EB Garamond', 'Georgia', 'serif'],
-        mono: ['Arial', 'Helvetica', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial', 'sans-serif'],
+        serif: ['Georgia', 'Times New Roman', 'serif'],
+        mono: ['SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },
       fontSize: {
         'xs': ['13px', { lineHeight: '1.5' }],
