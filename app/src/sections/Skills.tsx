@@ -49,7 +49,7 @@ const Skills = () => {
               </h3>
               <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="skills-pill">
+                  <span key={skillIndex} className="tech-pill">
                     {skill}
                   </span>
                 ))}
