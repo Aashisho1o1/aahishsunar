@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { type KeyboardEvent, useEffect, useRef, useState } from 'react'
 import { Send } from 'lucide-react'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
 interface Message {
   id: string
@@ -8,7 +9,7 @@ interface Message {
 }
 
 const ChatBot = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const { isVisible, sectionRef } = useRevealOnScroll(0.1)
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
@@ -19,25 +20,7 @@ const ChatBot = () => {
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  const messageIdCounterRef = useRef(1)
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -51,12 +34,13 @@ const ChatBot = () => {
   ]
 
   const handleSend = async (content: string) => {
-    if (!content.trim()) return
+    const trimmedContent = content.trim()
+    if (!trimmedContent) return
 
     const userMessage: Message = {
-      id: Date.now().toString(),
+      id: `message-${messageIdCounterRef.current++}`,
       role: 'user',
-      content: content.trim()
+      content: trimmedContent
     }
 
     setMessages(prev => [...prev, userMessage])
@@ -77,15 +61,16 @@ const ChatBot = () => {
     // Placeholder response for demo
     setTimeout(() => {
       setIsTyping(false)
-      setMessages(prev => [...prev, {
-        id: (Date.now() + 1).toString(),
+      const assistantMessage: Message = {
+        id: `message-${messageIdCounterRef.current++}`,
         role: 'assistant',
         content: "AI assistant coming soon — connect your Custom GPT endpoint to activate!"
-      }])
+      }
+      setMessages(prev => [...prev, assistantMessage])
     }, 1500)
   }
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
       handleSend(input)
@@ -171,7 +156,7 @@ const ChatBot = () => {
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={handleKeyPress}
+                  onKeyDown={handleKeyDown}
                   placeholder="Ask me anything..."
                   className="flex-1 px-4 py-3 bg-navy border border-navy-lighter rounded text-slate-lighter text-sm placeholder:text-slate/50 focus:outline-none focus:border-accent/50 transition-colors"
                 />

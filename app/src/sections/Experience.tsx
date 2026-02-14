@@ -1,27 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
 import { ExternalLink } from 'lucide-react'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
 const Experience = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  const { isVisible, sectionRef } = useRevealOnScroll(0.1)
 
   const experiences = [
     {
@@ -134,7 +115,7 @@ const Experience = () => {
         {/* View Full Resume Link */}
         <div className="mt-12">
           <a 
-            href="/Aashish_MojoTech.pdf"
+            href="https://example.com/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent font-mono text-sm hover:underline inline-flex items-center gap-2"
