@@ -37,7 +37,7 @@ const Hero = () => {
 
         {/* Name */}
         <h1 className="heading-xl text-white mb-4">
-          Aashish Dhakal
+          Aashish Sunar
         </h1>
 
         {/* Title */}
