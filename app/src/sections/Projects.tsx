@@ -100,7 +100,7 @@ const Projects = () => {
                 </div>
                 <div className={`flex flex-wrap gap-2 mb-4 ${index % 2 === 1 ? 'lg:justify-end' : ''}`}>
                   {project.tech.map((tech, tIndex) => (
-                    <span key={tIndex} className="text-slate-light text-sm font-medium">
+                    <span key={tIndex} className="tech-pill">
                       {tech}
                     </span>
                   ))}

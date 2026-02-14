@@ -32,7 +32,7 @@ const Experience = () => {
     {
       period: 'Jan 2023 – Present',
       role: 'Co-Founder',
-      company: 'Family Jewelry E-commerce Business, Nepal',
+      company: 'Jewelry E-commerce Business, Nepal',
       companyUrl: '#',
       bullets: [
         'Modernized century-old family business through e-commerce and TikTok marketing',
@@ -74,7 +74,7 @@ const Experience = () => {
                 {/* Role & Company */}
                 <h3 className="text-xl font-medium text-slate-lighter mb-2">
                   {exp.role}{' '}
-                  <span className="text-accent">@</span>{' '}
+                  <span className="text-slate/70">|</span>{' '}
                   <a 
                     href={exp.companyUrl}
                     target="_blank"
