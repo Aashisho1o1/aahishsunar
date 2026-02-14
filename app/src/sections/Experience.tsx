@@ -91,9 +91,9 @@ const Experience = () => {
                   {exp.bullets.map((bullet, bIndex) => (
                     <li 
                       key={bIndex}
-                      className="body-text flex items-start"
+                      className="body-text flex items-baseline"
                     >
-                      <span className="text-accent mr-2 mt-2">▹</span>
+                      <span className="text-accent mr-2 shrink-0">▹</span>
                       <span>{bullet}</span>
                     </li>
                   ))}
