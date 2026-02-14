@@ -1,27 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
 import { ExternalLink, Github } from 'lucide-react'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
 const Projects = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  const { isVisible, sectionRef } = useRevealOnScroll(0.1)
 
   const featuredProjects = [
     {

@@ -1,27 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
 import { Mail, Linkedin, Github } from 'lucide-react'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
 const Contact = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.3 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  const { isVisible, sectionRef } = useRevealOnScroll(0.3)
 
   return (
     <section 
@@ -88,7 +69,7 @@ const Contact = () => {
 
         {/* Resume Button */}
         <a 
-          href="/Aashish_MojoTech.pdf"
+          href="https://example.com/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="text-accent font-mono text-sm hover:underline"

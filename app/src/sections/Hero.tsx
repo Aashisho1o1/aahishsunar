@@ -5,7 +5,11 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    setIsVisible(true)
+    const animationFrame = window.requestAnimationFrame(() => {
+      setIsVisible(true)
+    })
+
+    return () => window.cancelAnimationFrame(animationFrame)
   }, [])
 
   const scrollToProjects = () => {
@@ -50,7 +54,7 @@ const Hero = () => {
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-4 mb-16">
           <a 
-            href="/Aashish_MojoTech.pdf"
+            href="https://example.com/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"

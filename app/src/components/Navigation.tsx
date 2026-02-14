@@ -1,19 +1,11 @@
 import { Github, Linkedin, Mail } from 'lucide-react'
+import { NAV_ITEMS } from '../constants/navigation'
 
 interface NavigationProps {
   activeSection: string
 }
 
 const Navigation = ({ activeSection }: NavigationProps) => {
-  const navItems = [
-    { id: 'about', label: 'About', number: '01' },
-    { id: 'experience', label: 'Experience', number: '02' },
-    { id: 'projects', label: 'Projects', number: '03' },
-    { id: 'chatbot', label: 'Ask My AI', number: '04' },
-    { id: 'skills', label: 'Skills', number: '05' },
-    { id: 'contact', label: 'Contact', number: '06' },
-  ]
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
@@ -37,7 +29,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
       {/* Navigation Links */}
       <nav className="flex-1 flex flex-col justify-center px-6">
         <ul className="space-y-6">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <li key={item.id}>
               <button
                 onClick={() => scrollToSection(item.id)}

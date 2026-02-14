@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Navigation from './components/Navigation'
+import { NAV_ITEMS, SCROLL_SECTIONS } from './constants/navigation'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Experience from './sections/Experience'
@@ -10,14 +11,13 @@ import Skills from './sections/Skills'
 import Contact from './sections/Contact'
 
 function App() {
-  const [activeSection, setActiveSection] = useState('hero')
+  const [activeSection, setActiveSection] = useState(SCROLL_SECTIONS[0])
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'experience', 'projects', 'chatbot', 'skills', 'contact']
       const scrollPosition = window.scrollY + window.innerHeight / 3
 
-      for (const section of sections) {
+      for (const section of SCROLL_SECTIONS) {
         const element = document.getElementById(section)
         if (element) {
           const { offsetTop, offsetHeight } = element
@@ -65,15 +65,6 @@ function App() {
 function MobileNav({ activeSection }: { activeSection: string }) {
   const [isOpen, setIsOpen] = useState(false)
 
-  const navItems = [
-    { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'chatbot', label: 'Ask My AI' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'contact', label: 'Contact' },
-  ]
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
@@ -110,7 +101,7 @@ function MobileNav({ activeSection }: { activeSection: string }) {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="bg-navy-light border-t border-navy-lighter px-6 py-4">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}

@@ -1,26 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
 const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.2 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  const { isVisible, sectionRef } = useRevealOnScroll(0.2)
 
   const skillGroups = [
     {
