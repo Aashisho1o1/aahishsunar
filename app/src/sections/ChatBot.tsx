@@ -19,12 +19,18 @@ const ChatBot = () => {
   ])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const messagesContainerRef = useRef<HTMLDivElement>(null)
   const messageIdCounterRef = useRef(1)
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+    const container = messagesContainerRef.current
+    if (!container) return
+
+    container.scrollTo({
+      top: container.scrollHeight,
+      behavior: 'smooth',
+    })
+  }, [messages, isTyping])
 
   const suggestedPrompts = [
     "What's Aashish's tech stack?",
@@ -100,7 +106,7 @@ const ChatBot = () => {
         <div className="max-w-2xl mx-auto">
           <div className="bg-navy-light border border-navy-lighter rounded-lg overflow-hidden">
             {/* Messages */}
-            <div className="h-80 overflow-y-auto p-4 space-y-4">
+            <div ref={messagesContainerRef} className="h-80 overflow-y-auto p-4 space-y-4">
               {messages.map((message) => (
                 <div 
                   key={message.id}
@@ -130,8 +136,6 @@ const ChatBot = () => {
                   </div>
                 </div>
               )}
-              
-              <div ref={messagesEndRef} />
             </div>
 
             {/* Suggested Prompts */}

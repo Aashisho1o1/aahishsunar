@@ -31,12 +31,12 @@ const Hero = () => {
     >
       <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         {/* Greeting */}
-        <p className="text-accent font-mono text-sm mb-5">
+        <p className="hero-kicker">
           Hi, my name is
         </p>
 
         {/* Name */}
-        <h1 className="heading-xl text-white mb-4">
+        <h1 className="heading-xl text-white mb-4 font-sans">
           Aashish Sunar
         </h1>
 

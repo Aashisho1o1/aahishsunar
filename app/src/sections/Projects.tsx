@@ -41,7 +41,7 @@ const Projects = () => {
       demo: '#'
     },
     {
-      name: 'Family Jewelry E-commerce',
+      name: 'Jewelry E-commerce',
       description: 'Digitized a century-old Nepalese jewelry business with online storefront.',
       impact: '$40K+ revenue generated',
       tech: ['E-commerce', 'TikTok Marketing'],

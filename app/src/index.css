@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -39,10 +39,12 @@
   
   .heading-lg {
     @apply text-3xl md:text-4xl font-semibold text-slate-lighter;
+    font-family: 'EB Garamond', 'Inter', serif;
   }
   
   .heading-md {
     @apply text-xl md:text-2xl font-semibold text-slate-lighter;
+    font-family: 'EB Garamond', 'Inter', serif;
   }
   
   .body-text {
@@ -51,6 +53,15 @@
   
   .small-text {
     @apply text-sm text-slate font-mono;
+  }
+
+  .hero-kicker {
+    @apply text-accent mb-5;
+    font-family: 'EB Garamond', 'Inter', serif;
+    font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
   }
   
   .accent-link {

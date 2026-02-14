@@ -14,6 +14,21 @@ function App() {
   const [activeSection, setActiveSection] = useState(SCROLL_SECTIONS[0])
 
   useEffect(() => {
+    const hasScrollRestoration = 'scrollRestoration' in window.history
+    if (hasScrollRestoration) {
+      window.history.scrollRestoration = 'manual'
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+
+    return () => {
+      if (hasScrollRestoration) {
+        window.history.scrollRestoration = 'auto'
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 3
 
