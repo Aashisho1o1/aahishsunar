@@ -26,7 +26,7 @@ const Contact = () => {
 
         {/* Status */}
         <p className="text-accent font-mono text-sm mb-10">
-          OPT-eligible · Available May 2026
+          CPT/OPT-eligible · No VISA Sponsorship Required · Available For Job/Internship
         </p>
 
         {/* Email Button */}

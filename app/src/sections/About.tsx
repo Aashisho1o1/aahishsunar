@@ -20,15 +20,14 @@ const About = () => {
         {/* Content */}
         <div className="max-w-3xl">
           <p className="body-text mb-4">
-            I'm currently pursuing my MS in Information Systems & Technology (AI-Driven Innovation) 
-            at Claremont Graduate University, graduating May 2026. I also work as a Full Stack Developer 
-            at Soka University of America, building web applications that serve students and faculty.
+            I'm currently pursuing my MS in Information Systems & Technology (AI-Driven Innovation) at Claremont Graduate University, graduating August 2026. I also worked as a Full Stack Developer 
+            (Assistant of Alumni Relations Department) at Soka University of America, building web applications.
           </p>
 
           <p className="body-text mb-4">
             I co-founded a family jewelry e-commerce business in Nepal that has generated $40,000+ in revenue. 
             As a first-generation college student, I've learned to adapt quickly and solve problems creatively. 
-            I'm multilingual — fluent in English, Hindi, Nepali, and Mandarin Chinese.
+            I'm multilingual — fluent in English, Hindi, and Nepali and a beginner in Mandarin Chinese.
           </p>
 
           <p className="body-text">
