@@ -74,7 +74,7 @@ const Hero = () => {
           {stats.map((stat, index) => (
             <div key={index} className="flex items-center">
               <div className="text-center">
-                <span className="text-accent font-mono text-lg font-semibold">{stat.value}</span>
+                <span className="hero-stat-value">{stat.value}</span>
                 <span className="text-slate text-xs ml-2">{stat.label}</span>
               </div>
               {index < stats.length - 1 && (

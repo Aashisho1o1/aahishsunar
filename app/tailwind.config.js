@@ -22,8 +22,9 @@ module.exports = {
         white: '#e6f1ff',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['Fira Code', 'monospace'],
+        sans: ['Arial', 'Helvetica', 'sans-serif'],
+        serif: ['EB Garamond', 'Georgia', 'serif'],
+        mono: ['Arial', 'Helvetica', 'sans-serif'],
       },
       fontSize: {
         'xs': ['13px', { lineHeight: '1.5' }],

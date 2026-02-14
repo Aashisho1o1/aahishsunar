@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -39,12 +39,12 @@
   
   .heading-lg {
     @apply text-3xl md:text-4xl font-semibold text-slate-lighter;
-    font-family: 'EB Garamond', 'Inter', serif;
+    font-family: 'EB Garamond', Arial, serif;
   }
   
   .heading-md {
     @apply text-xl md:text-2xl font-semibold text-slate-lighter;
-    font-family: 'EB Garamond', 'Inter', serif;
+    font-family: 'EB Garamond', Arial, serif;
   }
   
   .body-text {
@@ -57,7 +57,7 @@
 
   .hero-kicker {
     @apply text-accent mb-5;
-    font-family: 'EB Garamond', 'Inter', serif;
+    font-family: 'EB Garamond', Arial, serif;
     font-size: clamp(1.2rem, 1.6vw, 1.45rem);
     font-weight: 600;
     letter-spacing: 0.01em;
@@ -69,13 +69,26 @@
   }
   
   .btn-primary {
-    @apply px-7 py-4 border border-accent text-accent rounded text-sm font-mono
+    @apply px-7 py-4 border border-accent text-accent rounded text-base
            transition-all duration-300 hover:bg-accent/10;
+    font-family: 'EB Garamond', Arial, serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
   }
   
   .btn-ghost {
-    @apply px-7 py-4 text-accent text-sm font-mono
+    @apply px-7 py-4 text-accent text-base
            transition-all duration-300 hover:underline;
+    font-family: 'EB Garamond', Arial, serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-stat-value {
+    @apply text-accent text-3xl sm:text-4xl;
+    font-family: 'EB Garamond', Arial, serif;
+    font-weight: 700;
+    line-height: 1;
   }
   
   .tech-pill {
