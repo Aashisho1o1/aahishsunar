@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Navigation from './components/Navigation'
-import { NAV_ITEMS, SCROLL_SECTIONS } from './constants/navigation'
+import MobileNav from './components/MobileNav'
+import { SCROLL_SECTIONS } from './constants/navigation'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Experience from './sections/Experience'
@@ -73,63 +74,6 @@ function App() {
         </div>
       </main>
     </div>
-  )
-}
-
-// Mobile Navigation Component
-function MobileNav({ activeSection }: { activeSection: string }) {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setIsOpen(false)
-    }
-  }
-
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-sm border-b border-navy-lighter">
-      <div className="flex items-center justify-between px-6 py-4">
-        <a 
-          href="#hero" 
-          onClick={(e) => { e.preventDefault(); scrollToSection('hero') }}
-          className="text-accent font-sans text-lg font-bold"
-        >
-          A
-        </a>
-        
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-slate-lighter hover:text-accent transition-colors"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {isOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="bg-navy-light border-t border-navy-lighter px-6 py-4">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className={`block w-full text-left py-3 text-sm font-medium transition-colors ${
-                activeSection === item.id ? 'text-accent' : 'text-slate-light hover:text-accent'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-      )}
-    </nav>
   )
 }
 

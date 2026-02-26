@@ -8,6 +8,13 @@ interface Message {
   content: string
 }
 
+const suggestedPrompts = [
+  "What's Aashish's tech stack?",
+  "Tell me about OwenWrites",
+  "What's his work experience?",
+  "Why should we hire Aashish?"
+]
+
 const ChatBot = () => {
   const { isVisible, sectionRef } = useRevealOnScroll(0.1)
   const [messages, setMessages] = useState<Message[]>([
@@ -21,6 +28,7 @@ const ChatBot = () => {
   const [isTyping, setIsTyping] = useState(false)
   const messagesContainerRef = useRef<HTMLDivElement>(null)
   const messageIdCounterRef = useRef(1)
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const container = messagesContainerRef.current
@@ -32,12 +40,12 @@ const ChatBot = () => {
     })
   }, [messages, isTyping])
 
-  const suggestedPrompts = [
-    "What's Aashish's tech stack?",
-    "Tell me about OwenWrites",
-    "What's his work experience?",
-    "Why should we hire Aashish?"
-  ]
+  // Cleanup timeout on unmount to prevent state updates on an unmounted component
+  useEffect(() => {
+    return () => {
+      if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current)
+    }
+  }, [])
 
   const handleSend = async (content: string) => {
     const trimmedContent = content.trim()
@@ -55,7 +63,7 @@ const ChatBot = () => {
 
     // TODO: Connect to Custom GPT API endpoint here
     // Replace the setTimeout below with actual API call:
-    // 
+    //
     // const response = await fetch('YOUR_CUSTOM_GPT_ENDPOINT', {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/json' },
@@ -65,7 +73,7 @@ const ChatBot = () => {
     // setMessages(prev => [...prev, { id: Date.now().toString(), role: 'assistant', content: data.reply }])
 
     // Placeholder response for demo
-    setTimeout(() => {
+    typingTimeoutRef.current = setTimeout(() => {
       setIsTyping(false)
       const assistantMessage: Message = {
         id: `message-${messageIdCounterRef.current++}`,
@@ -84,8 +92,8 @@ const ChatBot = () => {
   }
 
   return (
-    <section 
-      id="chatbot" 
+    <section
+      id="chatbot"
       ref={sectionRef}
       className="py-24 lg:py-32"
     >
@@ -98,21 +106,27 @@ const ChatBot = () => {
         </h2>
 
         <p className="body-text mb-8 max-w-xl">
-          Curious about my experience, projects, or tech stack? Ask my AI assistant — 
+          Curious about my experience, projects, or tech stack? Ask my AI assistant —
           built with a custom RAG pipeline.
         </p>
 
         {/* Chat Interface */}
         <div className="max-w-2xl mx-auto">
           <div className="bg-navy-light border border-navy-lighter rounded-lg overflow-hidden">
-            {/* Messages */}
-            <div ref={messagesContainerRef} className="h-80 overflow-y-auto p-4 space-y-4">
+            {/* Messages — aria-live so screen readers announce new messages */}
+            <div
+              ref={messagesContainerRef}
+              role="log"
+              aria-live="polite"
+              aria-label="Chat messages"
+              className="h-80 overflow-y-auto p-4 space-y-4"
+            >
               {messages.map((message) => (
-                <div 
+                <div
                   key={message.id}
                   className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div 
+                  <div
                     className={`max-w-[80%] px-4 py-3 rounded-lg text-sm ${
                       message.role === 'user'
                         ? 'bg-accent/10 text-slate-lighter border border-accent/30'
@@ -123,16 +137,17 @@ const ChatBot = () => {
                   </div>
                 </div>
               ))}
-              
+
               {/* Typing Indicator */}
               {isTyping && (
                 <div className="flex justify-start">
                   <div className="bg-navy text-slate border border-navy-lighter px-4 py-3 rounded-lg">
-                    <div className="flex gap-1">
+                    <div className="flex gap-1" aria-hidden="true">
                       <span className="w-2 h-2 bg-slate rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                       <span className="w-2 h-2 bg-slate rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                       <span className="w-2 h-2 bg-slate rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                     </div>
+                    <span className="sr-only">AI is typing</span>
                   </div>
                 </div>
               )}
@@ -141,9 +156,9 @@ const ChatBot = () => {
             {/* Suggested Prompts */}
             <div className="px-4 py-3 border-t border-navy-lighter bg-navy/50">
               <div className="flex flex-wrap gap-2">
-                {suggestedPrompts.map((prompt, index) => (
+                {suggestedPrompts.map((prompt) => (
                   <button
-                    key={index}
+                    key={prompt}
                     onClick={() => handleSend(prompt)}
                     className="px-3 py-1.5 text-xs font-medium text-slate-light bg-navy border border-navy-lighter rounded hover:border-accent/50 hover:text-accent transition-all duration-300"
                   >
@@ -162,14 +177,16 @@ const ChatBot = () => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Ask me anything..."
+                  aria-label="Type your message"
                   className="flex-1 px-4 py-3 bg-navy border border-navy-lighter rounded text-slate-lighter text-sm placeholder:text-slate/50 focus:outline-none focus:border-accent/50 transition-colors"
                 />
                 <button
                   onClick={() => handleSend(input)}
                   disabled={!input.trim() || isTyping}
+                  aria-label="Send message"
                   className="px-4 py-3 bg-accent/10 border border-accent text-accent rounded hover:bg-accent/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send aria-hidden="true" className="w-4 h-4" />
                 </button>
               </div>
             </div>

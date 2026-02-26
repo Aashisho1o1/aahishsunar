@@ -55,7 +55,6 @@
 
   .hero-kicker {
     @apply text-accent mb-5 text-base md:text-lg font-semibold;
-    font-weight: 600;
     letter-spacing: 0.005em;
     line-height: 1.2;
   }
@@ -107,10 +106,6 @@
   
   .nav-link {
     @apply text-sm font-medium text-slate-light hover:text-accent transition-all duration-300;
-  }
-  
-  .nav-link.active {
-    @apply text-accent;
   }
 }
 

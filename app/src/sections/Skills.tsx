@@ -1,34 +1,34 @@
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 
+const skillGroups = [
+  {
+    category: 'Languages',
+    skills: ['Python', 'JavaScript', 'TypeScript', 'SQL', 'HTML/CSS']
+  },
+  {
+    category: 'Frameworks & Libraries',
+    skills: ['React', 'Next.js', 'Node.js', 'Express', 'Flask', 'Tailwind CSS']
+  },
+  {
+    category: 'AI/ML',
+    skills: ['NLP', 'BERT', 'RAG', 'LangChain', 'OpenAI API', 'Prompt Engineering']
+  },
+  {
+    category: 'Cloud & DevOps',
+    skills: ['Azure', 'AWS', 'Docker', 'Git', 'CI/CD']
+  },
+  {
+    category: 'Databases',
+    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Azure Data Studio']
+  }
+]
+
 const Skills = () => {
   const { isVisible, sectionRef } = useRevealOnScroll(0.2)
 
-  const skillGroups = [
-    {
-      category: 'Languages',
-      skills: ['Python', 'JavaScript', 'TypeScript', 'SQL', 'HTML/CSS']
-    },
-    {
-      category: 'Frameworks & Libraries',
-      skills: ['React', 'Next.js', 'Node.js', 'Express', 'Flask', 'Tailwind CSS']
-    },
-    {
-      category: 'AI/ML',
-      skills: ['NLP', 'BERT', 'RAG', 'LangChain', 'OpenAI API', 'Prompt Engineering']
-    },
-    {
-      category: 'Cloud & DevOps',
-      skills: ['Azure', 'AWS', 'Docker', 'Git', 'CI/CD']
-    },
-    {
-      category: 'Databases',
-      skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Azure Data Studio']
-    }
-  ]
-
   return (
-    <section 
-      id="skills" 
+    <section
+      id="skills"
       ref={sectionRef}
       className="py-24 lg:py-32"
     >
@@ -42,18 +42,18 @@ const Skills = () => {
 
         {/* Skills Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillGroups.map((group, index) => (
-            <div key={index}>
+          {skillGroups.map((group) => (
+            <div key={group.category}>
               <h3 className="text-slate-lighter font-medium mb-4">
                 {group.category}
               </h3>
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="skills-pill">
+              <ul className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <li key={skill} className="skills-pill">
                     {skill}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>

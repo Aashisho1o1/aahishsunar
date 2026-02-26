@@ -1,25 +1,21 @@
 import { Github, Linkedin, Mail } from 'lucide-react'
 import { NAV_ITEMS } from '../constants/navigation'
+import { GITHUB_URL, LINKEDIN_URL, EMAIL } from '../constants/links'
+import { scrollToSection } from '../utils/scrollToSection'
 
 interface NavigationProps {
   activeSection: string
 }
 
 const Navigation = ({ activeSection }: NavigationProps) => {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <aside className="fixed left-0 top-0 h-screen w-[100px] xl:w-[150px] bg-navy border-r border-navy-lighter/30 flex flex-col justify-between py-8 z-50">
+    <aside aria-label="Main navigation" className="fixed left-0 top-0 h-screen w-[100px] xl:w-[150px] bg-navy border-r border-navy-lighter/30 flex flex-col justify-between py-8 z-50">
       {/* Logo */}
       <div className="px-6">
-        <a 
-          href="#hero" 
+        <a
+          href="#hero"
           onClick={(e) => { e.preventDefault(); scrollToSection('hero') }}
+          aria-label="Aashish Sunar — back to top"
           className="text-accent font-sans text-2xl font-bold hover:text-white transition-colors"
         >
           A
@@ -33,6 +29,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
             <li key={item.id}>
               <button
                 onClick={() => scrollToSection(item.id)}
+                aria-current={activeSection === item.id ? 'true' : undefined}
                 className={`group flex items-center text-left transition-all duration-300 ${
                   activeSection === item.id ? 'text-accent' : 'text-slate-light hover:text-accent'
                 }`}
@@ -54,34 +51,34 @@ const Navigation = ({ activeSection }: NavigationProps) => {
       <div className="px-6">
         <ul className="flex flex-col gap-4">
           <li>
-            <a 
-              href="https://github.com/Aashisho1o1" 
-              target="_blank" 
+            <a
+              href={GITHUB_URL}
+              target="_blank"
               rel="noopener noreferrer"
               className="text-slate-light hover:text-accent transition-colors"
               aria-label="GitHub"
             >
-              <Github className="w-5 h-5" />
+              <Github aria-hidden="true" className="w-5 h-5" />
             </a>
           </li>
           <li>
-            <a 
-              href="https://linkedin.com/in/aashish-sunar" 
-              target="_blank" 
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
               rel="noopener noreferrer"
               className="text-slate-light hover:text-accent transition-colors"
               aria-label="LinkedIn"
             >
-              <Linkedin className="w-5 h-5" />
+              <Linkedin aria-hidden="true" className="w-5 h-5" />
             </a>
           </li>
           <li>
-            <a 
-              href="mailto:aashishsunar.01@gmail.com"
+            <a
+              href={`mailto:${EMAIL}`}
               className="text-slate-light hover:text-accent transition-colors"
               aria-label="Email"
             >
-              <Mail className="w-5 h-5" />
+              <Mail aria-hidden="true" className="w-5 h-5" />
             </a>
           </li>
         </ul>

@@ -1,12 +1,13 @@
 import { Mail, Linkedin, Github } from 'lucide-react'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
+import { GITHUB_URL, LINKEDIN_URL, EMAIL, RESUME_URL } from '../constants/links'
 
 const Contact = () => {
   const { isVisible, sectionRef } = useRevealOnScroll(0.3)
 
   return (
-    <section 
-      id="contact" 
+    <section
+      id="contact"
       ref={sectionRef}
       className="py-24 lg:py-32 min-h-[60vh] flex flex-col justify-center"
     >
@@ -30,46 +31,46 @@ const Contact = () => {
         </p>
 
         {/* Email Button */}
-        <a 
-          href="mailto:aashishsunar.01@gmail.com"
+        <a
+          href={`mailto:${EMAIL}`}
           className="btn-primary inline-flex items-center gap-2 mb-10"
         >
-          <Mail className="w-4 h-4" />
+          <Mail aria-hidden="true" className="w-4 h-4" />
           Say Hello
         </a>
 
         {/* Social Links */}
         <div className="flex justify-center gap-6 mb-12">
-          <a 
-            href="https://github.com/Aashisho1o1"
+          <a
+            href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-light hover:text-accent transition-colors"
             aria-label="GitHub"
           >
-            <Github className="w-6 h-6" />
+            <Github aria-hidden="true" className="w-6 h-6" />
           </a>
-          <a 
-            href="https://linkedin.com/in/aashish-sunar"
+          <a
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-light hover:text-accent transition-colors"
             aria-label="LinkedIn"
           >
-            <Linkedin className="w-6 h-6" />
+            <Linkedin aria-hidden="true" className="w-6 h-6" />
           </a>
-          <a 
-            href="mailto:aashishsunar.01@gmail.com"
+          <a
+            href={`mailto:${EMAIL}`}
             className="text-slate-light hover:text-accent transition-colors"
             aria-label="Email"
           >
-            <Mail className="w-6 h-6" />
+            <Mail aria-hidden="true" className="w-6 h-6" />
           </a>
         </div>
 
         {/* Resume Button */}
-        <a 
-          href="https://example.com/resume.pdf"
+        <a
+          href={RESUME_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="text-accent text-sm font-medium hover:underline"

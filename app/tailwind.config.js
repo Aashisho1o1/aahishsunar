@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -15,15 +14,11 @@ module.exports = {
           light: '#a8b2d1',
           lighter: '#ccd6f6',
         },
-        accent: {
-          DEFAULT: '#64ffda',
-          dark: '#57e0c1',
-        },
+        accent: '#64ffda',
         white: '#e6f1ff',
       },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial', 'sans-serif'],
-        serif: ['Georgia', 'Times New Roman', 'serif'],
         mono: ['SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },
       fontSize: {
@@ -37,13 +32,6 @@ module.exports = {
         '4xl': ['32px', { lineHeight: '1.1' }],
         '5xl': ['48px', { lineHeight: '1.1' }],
         '6xl': ['60px', { lineHeight: '1' }],
-      },
-      spacing: {
-        '18': '4.5rem',
-        '22': '5.5rem',
-      },
-      transitionTimingFunction: {
-        'custom': 'cubic-bezier(0.645, 0.045, 0.355, 1)',
       },
     },
   },
